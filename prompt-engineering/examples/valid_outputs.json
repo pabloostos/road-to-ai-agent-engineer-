@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2025-07-28T21:52:56.036612",
+    "data": {
+      "title": "The Matrix",
+      "genre": "Sci-Fi",
+      "rating": 8.7
+    }
+  },
+  {
+    "timestamp": "2025-07-28T21:53:56.161573",
+    "data": {
+      "title": "Inception",
+      "genre": "Sci-Fi",
+      "rating": 8.8
+    }
+  }
+]
