@@ -26,13 +26,17 @@ Write a prompt that asks the LLM to return a **movie recommendation** in **stric
 ### 2. Interact with the LLM
 Use your preferred method to call an LLM (e.g. OpenAI API, local model, or manual copy-paste from ChatGPT). Save the raw response as a string.
 
+---
 
 ### 3. Parse the JSON Output
 Use json.loads() to convert the raw string into a Python dictionary.
 
+---
+
 ### 4. Validate the JSON Structure
 Define a JSON Schema and validate the data using jsonschema.
 
+---
 
 ### 5. Save Valid Outputs
 Store valid outputs in a folder called /examples/ inside a file like valid_outputs.json.
