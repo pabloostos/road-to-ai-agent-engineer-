@@ -72,9 +72,7 @@ Wrap your response in triple backticks to help with extraction.
 Respond only with a valid JSON object wrapped in triple backticks.
 
 Example: 
-```json
 { "title": "Inception", "genre": "Sci-Fi", "rating": 9.3 }
-```
 ```
 
 ### ✅ Principle 4: Keep Language Minimal
@@ -98,13 +96,11 @@ Avoid open-ended instructions like "Explain why" or "Tell me more." Use direct c
 Give me one movie recommendation in the following JSON format. 
 Respond with only the JSON, and ensure it is valid:
 
-```json
 {
   "title": "string",
   "genre": "string",  
   "rating": "float from 0.0 to 10.0"
 }
-```
 ```
 
 **Expected Output:**
@@ -215,8 +211,9 @@ except ValidationError as e:
 
 ### ❌ Mistake 1: Natural Language with JSON
 
-**❌ Bad:**
-```json
+**❌ Bad Example:**
+The LLM responds with natural language mixed with JSON:
+```
 Here's a movie recommendation for you:
 {
   "title": "Inception",
@@ -226,7 +223,7 @@ Here's a movie recommendation for you:
 I hope you like this movie!
 ```
 
-**✅ Good:**
+**✅ Good Example:**
 ```json
 {
   "title": "Inception",
@@ -237,7 +234,8 @@ I hope you like this movie!
 
 ### ❌ Mistake 2: Incorrect Data Types
 
-**❌ Bad:**
+**❌ Bad Example:**
+The rating is returned as a string instead of a number:
 ```json
 {
   "title": "Inception",
@@ -246,7 +244,7 @@ I hope you like this movie!
 }
 ```
 
-**✅ Good:**
+**✅ Good Example:**
 ```json
 {
   "title": "Inception", 
@@ -257,7 +255,8 @@ I hope you like this movie!
 
 ### ❌ Mistake 3: Missing Required Fields
 
-**❌ Bad:**
+**❌ Bad Example:**
+The response is missing the required "genre" field:
 ```json
 {
   "title": "Inception",
@@ -266,7 +265,7 @@ I hope you like this movie!
 }
 ```
 
-**✅ Good:**
+**✅ Good Example:**
 ```json
 {
   "title": "Inception",
@@ -277,7 +276,8 @@ I hope you like this movie!
 
 ### ❌ Mistake 4: Malformed Characters
 
-**❌ Bad:**
+**❌ Bad Example:**
+The title contains unescaped quotes:
 ```json
 {
   "title": "The "Matrix"",  // Unescaped quotes
@@ -286,7 +286,7 @@ I hope you like this movie!
 }
 ```
 
-**✅ Good:**
+**✅ Good Example:**
 ```json
 {
   "title": "The Matrix",  // Clean string
@@ -297,12 +297,12 @@ I hope you like this movie!
 
 ### ❌ Mistake 5: Vague Instructions
 
-**❌ Bad:**
+**❌ Bad Example:**
 ```
 Give me info about a movie
 ```
 
-**✅ Good:**
+**✅ Good Example:**
 ```
 Return a JSON object with movie details including title, genre, and rating.
 ```
