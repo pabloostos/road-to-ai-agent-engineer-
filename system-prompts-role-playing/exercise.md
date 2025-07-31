@@ -2,12 +2,12 @@
 
 ## 🎯 Objective
 
-Learn to design effective system prompts and implement role-playing techniques with Large Language Models. You'll create AI personas, test their consistency, and build practical applications.
+Learn to design effective system prompts and implement role-playing techniques with Large Language Models using Hugging Face Inference API. You'll create AI personas, test their consistency, and build practical applications.
 
 ## 🧩 Exercise Overview
 
 ### Exercise 1: Basic System Prompt Design
-Create a simple system prompt for a specific role and test its effectiveness.
+Create a simple system prompt for a specific role and test its effectiveness with Hugging Face models.
 
 ### Exercise 2: Character Development
 Design a detailed character with personality, background, and communication style.
@@ -19,13 +19,13 @@ Test your character's consistency across different scenarios and conversations.
 Create a system that can switch between different roles seamlessly.
 
 ### Exercise 5: Production-Ready Implementation
-Build a complete role-playing system with proper error handling and monitoring.
+Build a complete role-playing system with proper error handling and monitoring using Hugging Face API.
 
 ## 📋 Detailed Instructions
 
 ### Exercise 1: Basic System Prompt Design
 
-**Objective**: Create a simple but effective system prompt for a specific role.
+**Objective**: Create a simple but effective system prompt for a specific role using Hugging Face models.
 
 **Tasks**:
 1. Choose a role (e.g., "Helpful Assistant", "Expert Chef", "Travel Guide")
@@ -33,7 +33,7 @@ Build a complete role-playing system with proper error handling and monitoring.
    - Clear role definition
    - Basic behavior guidelines
    - Response format preferences
-3. Test the prompt with different user inputs
+3. Test the prompt with different user inputs using Hugging Face Inference API
 4. Evaluate effectiveness and iterate
 
 **Deliverables**:
@@ -53,7 +53,7 @@ Build a complete role-playing system with proper error handling and monitoring.
    - Knowledge areas and expertise
    - Behavioral patterns and preferences
 2. Implement the character using system prompts
-3. Test character consistency
+3. Test character consistency with Hugging Face models
 4. Document character guidelines
 
 **Deliverables**:
@@ -70,7 +70,7 @@ Build a complete role-playing system with proper error handling and monitoring.
    - Different conversation topics
    - Various user personalities
    - Edge cases and challenges
-2. Run consistency tests
+2. Run consistency tests using Hugging Face API
 3. Identify and fix inconsistencies
 4. Document improvement strategies
 
@@ -87,7 +87,7 @@ Build a complete role-playing system with proper error handling and monitoring.
 1. Design multiple related roles
 2. Create role switching mechanisms
 3. Implement context management
-4. Test role transitions
+4. Test role transitions with Hugging Face models
 5. Ensure smooth user experience
 
 **Deliverables**:
@@ -97,14 +97,14 @@ Build a complete role-playing system with proper error handling and monitoring.
 
 ### Exercise 5: Production-Ready Implementation
 
-**Objective**: Build a complete, production-ready role-playing system.
+**Objective**: Build a complete, production-ready role-playing system using Hugging Face Inference API.
 
 **Tasks**:
-1. Implement proper error handling
+1. Implement proper error handling for Hugging Face API calls
 2. Add monitoring and logging
 3. Create user management features
 4. Add safety and content filtering
-5. Optimize for performance
+5. Optimize for performance with Hugging Face models
 6. Create comprehensive documentation
 
 **Deliverables**:
@@ -116,9 +116,15 @@ Build a complete role-playing system with proper error handling and monitoring.
 ## 🔧 Technical Requirements
 
 ### Dependencies
-- OpenAI API access
+- Hugging Face Inference API access
 - Python 3.8+
 - Required packages (see requirements.txt)
+
+### API Setup
+1. **Hugging Face Account**: Create account at [huggingface.co](https://huggingface.co)
+2. **API Key**: Get from Settings → Access Tokens
+3. **Environment Variable**: Set `HUGGINGFACE_API_KEY="your-key"`
+4. **Free Tier**: 30,000 requests/month
 
 ### File Structure
 ```
@@ -137,60 +143,3 @@ system-prompts-role-playing/
     ├── test_consistency.py  # Consistency tests
     └── test_system.py       # System tests
 ```
-
-## 📊 Evaluation Criteria
-
-### Character Quality
-- **Consistency**: Character maintains personality across interactions
-- **Believability**: Responses feel natural and in-character
-- **Depth**: Character has rich personality and background
-- **Adaptability**: Character handles different scenarios well
-
-### System Performance
-- **Reliability**: System works consistently without errors
-- **Scalability**: Can handle multiple users and conversations
-- **Safety**: Appropriate content filtering and safety measures
-- **User Experience**: Smooth and intuitive interactions
-
-### Code Quality
-- **Documentation**: Clear and comprehensive documentation
-- **Error Handling**: Robust error management
-- **Testing**: Comprehensive test coverage
-- **Maintainability**: Clean, well-structured code
-
-## 🚀 Getting Started
-
-1. **Setup Environment**:
-   ```bash
-   cd system-prompts-role-playing
-   pip install -r requirements.txt
-   ```
-
-2. **Configure API**:
-   ```bash
-   cp .env.example .env
-   # Edit .env with your OpenAI API key
-   ```
-
-3. **Run Exercises**:
-   ```bash
-   python src/main.py
-   ```
-
-## 📝 Submission Guidelines
-
-- Complete all 5 exercises
-- Document your process and learnings
-- Include test results and observations
-- Provide code with proper documentation
-- Create character profiles and system designs
-
-## 🎓 Learning Outcomes
-
-After completing these exercises, you'll be able to:
-- Design effective system prompts for any role
-- Create believable and consistent AI characters
-- Build multi-role systems with smooth transitions
-- Implement production-ready role-playing applications
-- Test and validate character consistency
-- Handle ethical considerations and safety measures 

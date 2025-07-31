@@ -1,6 +1,6 @@
 # System Prompts and Role Playing
 
-A comprehensive module for learning how to design effective system prompts and implement role-playing techniques with Large Language Models (LLMs).
+A comprehensive module for learning how to design effective system prompts and implement role-playing techniques with Large Language Models (LLMs) using Hugging Face Inference API.
 
 ## 🎯 Overview
 
@@ -9,7 +9,7 @@ This module explores:
 - Role-playing techniques and best practices
 - Character development and personality crafting
 - Context management and conversation flow
-- Practical implementation with OpenAI API
+- Practical implementation with Hugging Face Inference API
 
 ## 📁 Project Structure
 
@@ -33,9 +33,22 @@ cd system-prompts-role-playing
 # Install dependencies
 pip install -r requirements.txt
 
+# Set up Hugging Face API key
+# Get your API key from: https://huggingface.co/settings/tokens
+export HUGGINGFACE_API_KEY="your-api-key-here"
+
 # Run exercises
 python src/main.py
 ```
+
+## 🔑 API Setup
+
+This module uses **Hugging Face Inference API** for LLM interactions:
+
+1. **Create a Hugging Face account**: [huggingface.co](https://huggingface.co)
+2. **Get your API key**: Go to Settings → Access Tokens
+3. **Set environment variable**: `export HUGGINGFACE_API_KEY="your-key"`
+4. **Free tier**: 30,000 requests/month
 
 ## 📚 Learning Objectives
 
@@ -44,7 +57,7 @@ After completing this module, you'll understand:
 - Role-playing techniques and applications
 - Character consistency and personality management
 - Context-aware conversation design
-- Production-ready role-playing implementations
+- Production-ready role-playing implementations with Hugging Face API
 
 ## 🔗 Related Modules
 
