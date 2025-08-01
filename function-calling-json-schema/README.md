@@ -40,11 +40,19 @@ function-calling-json-schema/
 
 ## API Setup
 
-This module uses Hugging Face Inference API for demonstrations. Set your API key in the `.env` file:
+This module uses **OpenRouter** for demonstrations, which provides access to multiple LLM models including GPT-4, Claude, and others. Set your API key in the `.env` file:
 
 ```
-HUGGINGFACE_API_KEY=your-huggingface-api-key-here
+OPENROUTER_API_KEY=your-openrouter-api-key-here
 ```
+
+### Getting OpenRouter API Key
+
+1. Visit [OpenRouter](https://openrouter.ai/)
+2. Sign up for a free account
+3. Navigate to your API keys section
+4. Copy your API key
+5. Add it to your `.env` file
 
 ## Exercises
 

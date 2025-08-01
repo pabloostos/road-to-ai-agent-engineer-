@@ -14,7 +14,7 @@ You will implement function calling patterns and JSON schema validation to creat
 - Creating JSON schema validators
 - Building error handling systems
 
-You may test your implementations using Hugging Face Inference API.
+You may test your implementations using OpenRouter API.
 
 ---
 
