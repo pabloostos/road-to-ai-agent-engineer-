@@ -59,8 +59,8 @@ def call_openrouter_api(api_key: str, prompt: str, max_tokens: int = 300) -> str
 
 def create_lead_scoring_prompt():
     """Create a prompt for lead scoring."""
-    prompt = """
-You are a sales AI reviewing a potential customer.
+    prompt = """You are a sales AI reviewing a potential customer.
+
 Based on the description, assign a lead score from 0-100 and summarize the opportunity.
 Consider factors like:
 - Company size and industry
@@ -69,12 +69,14 @@ Consider factors like:
 - Technical requirements
 - Strategic fit
 
-Return a JSON object with:
-- "lead_score": number from 0-100
-- "confidence": confidence level (0.0-1.0)
-- "key_factors": list of positive factors
-- "concerns": list of potential concerns
-- "next_steps": recommended next actions
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "lead_score": 0-100,
+  "confidence": 0.0-1.0,
+  "key_factors": ["factor1", "factor2"],
+  "concerns": ["concern1", "concern2"],
+  "next_steps": ["step1", "step2"]
+}
 
 Lead Description:
 """
@@ -82,8 +84,8 @@ Lead Description:
 
 def create_call_summary_prompt():
     """Create a prompt for summarizing sales calls."""
-    prompt = """
-You are a sales assistant summarizing a sales call.
+    prompt = """You are a sales assistant summarizing a sales call.
+
 Create a structured summary of the conversation including:
 - Key discussion points
 - Customer pain points identified
@@ -92,13 +94,15 @@ Create a structured summary of the conversation including:
 - Next steps agreed upon
 - Follow-up actions required
 
-Return a JSON object with:
-- "call_summary": brief overview
-- "pain_points": list of customer issues
-- "interest_level": "high", "medium", or "low"
-- "objections": list of objections
-- "next_steps": list of agreed actions
-- "follow_up_required": true/false
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "call_summary": "brief overview",
+  "pain_points": ["point1", "point2"],
+  "interest_level": "high|medium|low",
+  "objections": ["objection1", "objection2"],
+  "next_steps": ["step1", "step2"],
+  "follow_up_required": true|false
+}
 
 Call Transcript:
 """
@@ -106,8 +110,8 @@ Call Transcript:
 
 def create_campaign_generator_prompt():
     """Create a prompt for generating marketing campaigns."""
-    prompt = """
-You are a marketing AI creating campaign ideas.
+    prompt = """You are a marketing AI creating campaign ideas.
+
 Based on the target audience and product information, generate campaign concepts.
 Consider:
 - Target audience characteristics
@@ -116,20 +120,61 @@ Consider:
 - Channel preferences
 - Call-to-action strategies
 
-Return a JSON object with:
-- "campaign_name": creative campaign title
-- "target_audience": audience description
-- "key_message": main value proposition
-- "channels": list of recommended channels
-- "cta": call-to-action text
-- "success_metrics": list of KPIs to track
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "campaign_name": "creative campaign title",
+  "target_audience": "audience description",
+  "key_message": "main value proposition",
+  "channels": ["channel1", "channel2"],
+  "cta": "call-to-action text",
+  "success_metrics": ["metric1", "metric2"]
+}
 
 Product Information:
 """
     return prompt
 
-def simulate_lead_scoring(lead_description: str) -> Dict[str, Any]:
-    """Simulate lead scoring without API call."""
+def simulate_lead_scoring(lead_description: str, api_key: str = None) -> Dict[str, Any]:
+    """Score leads using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_lead_scoring_prompt() + lead_description
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=200)
+            
+            # Try to extract JSON from response
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "lead_score": 50,
+                        "confidence": 0.5,
+                        "key_factors": ["API response parsing issue"],
+                        "concerns": ["Unable to parse response"],
+                        "next_steps": ["Manual review required"]
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "lead_score": 50,
+                    "confidence": 0.5,
+                    "key_factors": ["JSON parsing error"],
+                    "concerns": ["Response format issue"],
+                    "next_steps": ["Manual review required"]
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     description_lower = lead_description.lower()
     
     # Simple scoring logic
@@ -161,8 +206,49 @@ def simulate_lead_scoring(lead_description: str) -> Dict[str, Any]:
         "next_steps": ["Schedule demo", "Send proposal"] if score > 70 else ["Follow up in 30 days"]
     }
 
-def simulate_call_summary(call_transcript: str) -> Dict[str, Any]:
-    """Simulate call summary without API call."""
+def simulate_call_summary(call_transcript: str, api_key: str = None) -> Dict[str, Any]:
+    """Summarize sales calls using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_call_summary_prompt() + call_transcript
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=250)
+            
+            # Try to extract JSON from response
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "call_summary": "API response parsing issue",
+                        "pain_points": ["Unable to parse response"],
+                        "interest_level": "unknown",
+                        "objections": ["Response format issue"],
+                        "next_steps": ["Manual review required"],
+                        "follow_up_required": True
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "call_summary": "JSON parsing error",
+                    "pain_points": ["Response format issue"],
+                    "interest_level": "unknown",
+                    "objections": ["Parsing error"],
+                    "next_steps": ["Manual review required"],
+                    "follow_up_required": True
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     transcript_lower = call_transcript.lower()
     
     # Extract key information
@@ -187,8 +273,49 @@ def simulate_call_summary(call_transcript: str) -> Dict[str, Any]:
         "follow_up_required": True
     }
 
-def simulate_campaign_generation(product_info: str) -> Dict[str, Any]:
-    """Simulate campaign generation without API call."""
+def simulate_campaign_generation(product_info: str, api_key: str = None) -> Dict[str, Any]:
+    """Generate marketing campaigns using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_campaign_generator_prompt() + product_info
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=300)
+            
+            # Try to extract JSON from response
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "campaign_name": "API Response Campaign",
+                        "target_audience": "Unable to parse response",
+                        "key_message": "API response parsing issue",
+                        "channels": ["Manual review required"],
+                        "cta": "Contact support",
+                        "success_metrics": ["Response parsing"]
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "campaign_name": "JSON Error Campaign",
+                    "target_audience": "Response format issue",
+                    "key_message": "JSON parsing error",
+                    "channels": ["Manual review required"],
+                    "cta": "Contact support",
+                    "success_metrics": ["Parsing error"]
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     info_lower = product_info.lower()
     
     if "ai" in info_lower or "automation" in info_lower:
@@ -265,17 +392,17 @@ def main():
         print()
         
         if test_case['type'] == 'lead_scoring':
-            result = simulate_lead_scoring(test_case['description'])
+            result = simulate_lead_scoring(test_case['description'], api_key)
             print("Lead Scoring Result:")
             print(json.dumps(result, indent=2))
             
         elif test_case['type'] == 'call_summary':
-            result = simulate_call_summary(test_case['description'])
+            result = simulate_call_summary(test_case['description'], api_key)
             print("Call Summary Result:")
             print(json.dumps(result, indent=2))
             
         elif test_case['type'] == 'campaign_generation':
-            result = simulate_campaign_generation(test_case['description'])
+            result = simulate_campaign_generation(test_case['description'], api_key)
             print("Campaign Generation Result:")
             print(json.dumps(result, indent=2))
         

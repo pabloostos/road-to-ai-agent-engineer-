@@ -59,23 +59,25 @@ def call_openrouter_api(api_key: str, prompt: str, max_tokens: int = 500) -> str
 
 def create_customer_journey_prompt():
     """Create a prompt for analyzing customer journey across departments."""
-    prompt = """
-You are a business analyst analyzing customer interactions across multiple departments.
+    prompt = """You are a business analyst analyzing customer interactions across multiple departments.
+
 Create a comprehensive customer journey analysis that integrates data from:
 - Customer Support (tickets, sentiment)
 - Sales (lead scoring, call summaries)
 - Marketing (campaign responses)
 - Operations (incident impact)
 
-Return a JSON object with:
-- "customer_id": unique identifier
-- "journey_stage": "awareness", "consideration", "purchase", "retention", or "advocacy"
-- "department_touchpoints": list of interactions by department
-- "overall_sentiment": "positive", "negative", or "neutral"
-- "risk_score": 0-100 (likelihood of churn)
-- "opportunity_score": 0-100 (upsell potential)
-- "recommended_actions": list of next steps by department
-- "escalation_needed": true/false
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "customer_id": "unique identifier",
+  "journey_stage": "awareness|consideration|purchase|retention|advocacy",
+  "department_touchpoints": [{"department": "dept", "interaction": "description"}],
+  "overall_sentiment": "positive|negative|neutral",
+  "risk_score": 0-100,
+  "opportunity_score": 0-100,
+  "recommended_actions": ["action1", "action2"],
+  "escalation_needed": true|false
+}
 
 Customer Data:
 """
@@ -83,10 +85,9 @@ Customer Data:
 
 def create_workflow_orchestrator_prompt():
     """Create a prompt for orchestrating multi-department workflows."""
-    prompt = """
-You are a workflow orchestrator managing business processes across departments.
-Based on the input, determine the optimal workflow sequence and assign tasks to appropriate departments.
+    prompt = """You are a workflow orchestrator managing business processes across departments.
 
+Based on the input, determine the optimal workflow sequence and assign tasks to appropriate departments.
 Consider:
 - Process priority and urgency
 - Department capabilities and availability
@@ -94,15 +95,17 @@ Consider:
 - Resource allocation
 - Handoff points
 
-Return a JSON object with:
-- "workflow_id": unique identifier
-- "priority": "low", "medium", "high", or "critical"
-- "departments_involved": list of departments
-- "task_sequence": ordered list of tasks
-- "estimated_duration": total time estimate
-- "dependencies": task dependencies
-- "success_metrics": list of KPIs to track
-- "escalation_triggers": conditions for escalation
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "workflow_id": "unique identifier",
+  "priority": "low|medium|high|critical",
+  "departments_involved": ["dept1", "dept2"],
+  "task_sequence": ["task1", "task2"],
+  "estimated_duration": "time estimate",
+  "dependencies": ["dep1", "dep2"],
+  "success_metrics": ["metric1", "metric2"],
+  "escalation_triggers": ["trigger1", "trigger2"]
+}
 
 Workflow Request:
 """
@@ -110,10 +113,9 @@ Workflow Request:
 
 def create_business_intelligence_prompt():
     """Create a prompt for generating business intelligence reports."""
-    prompt = """
-You are a business intelligence analyst creating comprehensive reports.
-Synthesize data from multiple departments to provide actionable insights.
+    prompt = """You are a business intelligence analyst creating comprehensive reports.
 
+Synthesize data from multiple departments to provide actionable insights.
 Include:
 - Key performance indicators
 - Trend analysis
@@ -122,22 +124,69 @@ Include:
 - Opportunity identification
 - Strategic recommendations
 
-Return a JSON object with:
-- "report_period": time period covered
-- "executive_summary": high-level insights
-- "department_performance": performance by department
-- "trends": identified trends
-- "risks": potential risks
-- "opportunities": growth opportunities
-- "recommendations": strategic actions
-- "next_period_focus": priority areas
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "report_period": "time period",
+  "executive_summary": "high-level insights",
+  "department_performance": {"dept": "performance"},
+  "trends": ["trend1", "trend2"],
+  "risks": ["risk1", "risk2"],
+  "opportunities": ["opp1", "opp2"],
+  "recommendations": ["rec1", "rec2"],
+  "next_period_focus": ["focus1", "focus2"]
+}
 
 Business Data:
 """
     return prompt
 
-def simulate_customer_journey_analysis(customer_data: str) -> Dict[str, Any]:
-    """Simulate customer journey analysis without API call."""
+def simulate_customer_journey_analysis(customer_data: str, api_key: str = None) -> Dict[str, Any]:
+    """Analyze customer journey using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_customer_journey_prompt() + customer_data
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=400)
+            
+            # Try to extract JSON from response
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "customer_id": "CUST-ERROR",
+                        "journey_stage": "unknown",
+                        "department_touchpoints": [{"department": "API", "interaction": "Response parsing issue"}],
+                        "overall_sentiment": "neutral",
+                        "risk_score": 50,
+                        "opportunity_score": 50,
+                        "recommended_actions": ["Manual review required"],
+                        "escalation_needed": True
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "customer_id": "CUST-ERROR",
+                    "journey_stage": "unknown",
+                    "department_touchpoints": [{"department": "API", "interaction": "JSON parsing error"}],
+                    "overall_sentiment": "neutral",
+                    "risk_score": 50,
+                    "opportunity_score": 50,
+                    "recommended_actions": ["Manual review required"],
+                    "escalation_needed": True
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     data_lower = customer_data.lower()
     
     # Determine journey stage
@@ -185,8 +234,53 @@ def simulate_customer_journey_analysis(customer_data: str) -> Dict[str, Any]:
         "escalation_needed": risk_score > 60
     }
 
-def simulate_workflow_orchestration(workflow_request: str) -> Dict[str, Any]:
-    """Simulate workflow orchestration without API call."""
+def simulate_workflow_orchestration(workflow_request: str, api_key: str = None) -> Dict[str, Any]:
+    """Orchestrate workflows using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_workflow_orchestrator_prompt() + workflow_request
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=400)
+            
+            # Try to extract JSON from response
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "workflow_id": "WF-ERROR",
+                        "priority": "medium",
+                        "departments_involved": ["API response parsing issue"],
+                        "task_sequence": ["Manual review required"],
+                        "estimated_duration": "unknown",
+                        "dependencies": ["Response format issue"],
+                        "success_metrics": ["Manual review"],
+                        "escalation_triggers": ["API parsing error"]
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "workflow_id": "WF-ERROR",
+                    "priority": "medium",
+                    "departments_involved": ["JSON parsing error"],
+                    "task_sequence": ["Manual review required"],
+                    "estimated_duration": "unknown",
+                    "dependencies": ["Parsing error"],
+                    "success_metrics": ["Manual review"],
+                    "escalation_triggers": ["JSON parsing error"]
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     request_lower = workflow_request.lower()
     
     # Determine priority
@@ -228,8 +322,59 @@ def simulate_workflow_orchestration(workflow_request: str) -> Dict[str, Any]:
         "escalation_triggers": ["SLA breach", "Customer complaint", "Technical complexity"]
     }
 
-def simulate_business_intelligence_report(business_data: str) -> Dict[str, Any]:
-    """Simulate business intelligence report without API call."""
+def simulate_business_intelligence_report(business_data: str, api_key: str = None) -> Dict[str, Any]:
+    """Generate business intelligence reports using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_business_intelligence_prompt() + business_data
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=500)
+            
+            # Try to extract JSON from response
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "report_period": "Q1 2024",
+                        "executive_summary": "API response parsing issue. Manual review required.",
+                        "department_performance": {
+                            "API": "Response parsing issue",
+                            "Manual": "Review required"
+                        },
+                        "trends": ["API parsing error"],
+                        "risks": ["Response format issue"],
+                        "opportunities": ["Manual review"],
+                        "recommendations": ["Contact technical team"],
+                        "next_period_focus": ["API integration"]
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "report_period": "Q1 2024",
+                    "executive_summary": "JSON parsing error. Manual review required.",
+                    "department_performance": {
+                        "API": "JSON parsing error",
+                        "Manual": "Review required"
+                    },
+                    "trends": ["JSON parsing error"],
+                    "risks": ["Parsing error"],
+                    "opportunities": ["Manual review"],
+                    "recommendations": ["Contact technical team"],
+                    "next_period_focus": ["API integration"]
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     data_lower = business_data.lower()
     
     # Generate insights based on data
@@ -313,17 +458,17 @@ def main():
         print()
         
         if test_case['type'] == 'customer_journey':
-            result = simulate_customer_journey_analysis(test_case['description'])
+            result = simulate_customer_journey_analysis(test_case['description'], api_key)
             print("Customer Journey Analysis Result:")
             print(json.dumps(result, indent=2))
             
         elif test_case['type'] == 'workflow_orchestration':
-            result = simulate_workflow_orchestration(test_case['description'])
+            result = simulate_workflow_orchestration(test_case['description'], api_key)
             print("Workflow Orchestration Result:")
             print(json.dumps(result, indent=2))
             
         elif test_case['type'] == 'business_intelligence':
-            result = simulate_business_intelligence_report(test_case['description'])
+            result = simulate_business_intelligence_report(test_case['description'], api_key)
             print("Business Intelligence Report Result:")
             print(json.dumps(result, indent=2))
         

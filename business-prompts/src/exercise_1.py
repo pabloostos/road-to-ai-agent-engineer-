@@ -59,48 +59,95 @@ def call_openrouter_api(api_key: str, prompt: str, max_tokens: int = 200) -> str
 
 def create_support_ticket_classifier_prompt():
     """Create a prompt for classifying support tickets."""
-    prompt = """
-You are an AI assistant for a customer support team.
-Classify the following ticket into one of these categories: ["Billing", "Technical", "Account", "Other"].
-Also assign a severity score from 1 (low) to 5 (critical).
-Output in JSON format with fields: "category", "severity", "urgency_reason".
+    prompt = """You are an AI assistant for a customer support team.
 
-Ticket:
+Analyze the following support ticket and classify it into one of these categories: ["Billing", "Technical", "Account", "Other"].
+
+Also assign a severity score from 1 (low) to 5 (critical) and provide a brief urgency reason.
+
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "category": "Billing|Technical|Account|Other",
+  "severity": 1-5,
+  "urgency_reason": "brief explanation"
+}
+
+Support Ticket:
 """
     return prompt
 
 def create_reply_drafter_prompt():
     """Create a prompt for drafting customer support replies."""
-    prompt = """
-You are a customer support representative.
-Based on the following ticket, draft a professional and helpful reply.
-Include:
-- Acknowledgment of the issue
-- Clear explanation or solution
-- Next steps if needed
-- Professional closing
+    prompt = """You are a professional customer support representative.
 
-Ticket:
+Based on the following support ticket, draft a helpful and professional reply that:
+1. Acknowledges the customer's issue
+2. Provides a clear explanation or solution
+3. Includes next steps if needed
+4. Uses a professional and empathetic tone
+
+Write a complete email reply that the customer support team can send directly to the customer.
+
+Support Ticket:
 """
     return prompt
 
 def create_sentiment_analyzer_prompt():
     """Create a prompt for analyzing customer sentiment."""
-    prompt = """
-You are an AI analyzing customer sentiment from support interactions.
-Analyze the following customer message and return a JSON object with:
-- "sentiment": "positive", "negative", "neutral", or "mixed"
-- "confidence": score from 0.0 to 1.0
-- "key_emotions": list of detected emotions
-- "escalation_needed": true/false based on sentiment
+    prompt = """You are an AI analyzing customer sentiment from support interactions.
+
+Analyze the following customer message and determine the sentiment and emotional state.
+
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "sentiment": "positive|negative|neutral|mixed",
+  "confidence": 0.0-1.0,
+  "key_emotions": ["emotion1", "emotion2"],
+  "escalation_needed": true|false
+}
 
 Customer Message:
 """
     return prompt
 
-def simulate_ticket_classification(ticket_text: str) -> Dict[str, Any]:
-    """Simulate ticket classification without API call."""
-    # Simple rule-based classification for demonstration
+def simulate_ticket_classification(ticket_text: str, api_key: str = None) -> Dict[str, Any]:
+    """Classify support tickets using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_support_ticket_classifier_prompt() + ticket_text
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=150)
+            
+            # Try to extract JSON from response
+            try:
+                # Look for JSON in the response
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "category": "Technical",  # Default fallback
+                        "severity": 3,
+                        "urgency_reason": "API response parsing issue"
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "category": "Other",
+                    "severity": 2,
+                    "urgency_reason": "Unable to parse API response"
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     ticket_lower = ticket_text.lower()
     
     if any(word in ticket_lower for word in ["billing", "charge", "payment", "invoice", "cost"]):
@@ -126,8 +173,21 @@ def simulate_ticket_classification(ticket_text: str) -> Dict[str, Any]:
         "urgency_reason": urgency_reason
     }
 
-def simulate_reply_drafting(ticket_text: str) -> str:
-    """Simulate reply drafting without API call."""
+def simulate_reply_drafting(ticket_text: str, api_key: str = None) -> str:
+    """Draft customer support replies using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_reply_drafter_prompt() + ticket_text
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=300)
+            return response
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     ticket_lower = ticket_text.lower()
     
     if "billing" in ticket_lower or "charge" in ticket_lower:
@@ -177,8 +237,46 @@ Customer Support Team"""
     
     return reply
 
-def simulate_sentiment_analysis(customer_message: str) -> Dict[str, Any]:
-    """Simulate sentiment analysis without API call."""
+def simulate_sentiment_analysis(customer_message: str, api_key: str = None) -> Dict[str, Any]:
+    """Analyze customer sentiment using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_sentiment_analyzer_prompt() + customer_message
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=150)
+            
+            # Try to extract JSON from response
+            try:
+                # Look for JSON in the response
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "sentiment": "neutral",
+                        "confidence": 0.5,
+                        "key_emotions": ["unknown"],
+                        "escalation_needed": False
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "sentiment": "neutral",
+                    "confidence": 0.5,
+                    "key_emotions": ["parsing_error"],
+                    "escalation_needed": False
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     message_lower = customer_message.lower()
     
     # Simple sentiment analysis based on keywords
@@ -267,20 +365,20 @@ def main():
         
         if test_case['type'] == 'classification':
             # Classify ticket
-            classification = simulate_ticket_classification(test_case['ticket'])
+            classification = simulate_ticket_classification(test_case['ticket'], api_key)
             print("Classification Result:")
             print(json.dumps(classification, indent=2))
             print()
             
             # Draft reply
-            reply = simulate_reply_drafting(test_case['ticket'])
+            reply = simulate_reply_drafting(test_case['ticket'], api_key)
             print("Drafted Reply:")
             print(reply)
             print()
             
         elif test_case['type'] == 'sentiment':
             # Analyze sentiment
-            sentiment = simulate_sentiment_analysis(test_case['ticket'])
+            sentiment = simulate_sentiment_analysis(test_case['ticket'], api_key)
             print("Sentiment Analysis:")
             print(json.dumps(sentiment, indent=2))
             print()

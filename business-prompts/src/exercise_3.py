@@ -59,10 +59,9 @@ def call_openrouter_api(api_key: str, prompt: str, max_tokens: int = 400) -> str
 
 def create_resume_screening_prompt():
     """Create a prompt for resume screening."""
-    prompt = """
-You are an AI recruiter analyzing resumes for job positions.
-Evaluate the candidate's fit for the specified role and return a structured assessment.
+    prompt = """You are an AI recruiter analyzing resumes for job positions.
 
+Evaluate the candidate's fit for the specified role and return a structured assessment.
 Consider:
 - Relevant experience and skills
 - Education and certifications
@@ -70,14 +69,16 @@ Consider:
 - Red flags or concerns
 - Overall recommendation
 
-Return a JSON object with:
-- "is_qualified": true/false
-- "years_experience": number
-- "key_skills": list of relevant skills
-- "missing_skills": list of required skills not found
-- "red_flags": list of concerns
-- "recommendation": "hire", "consider", or "reject"
-- "confidence": confidence level (0.0-1.0)
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "is_qualified": true|false,
+  "years_experience": number,
+  "key_skills": ["skill1", "skill2"],
+  "missing_skills": ["skill1", "skill2"],
+  "red_flags": ["flag1", "flag2"],
+  "recommendation": "hire|consider|reject",
+  "confidence": 0.0-1.0
+}
 
 Job Position:
 Resume:
@@ -86,10 +87,9 @@ Resume:
 
 def create_incident_classifier_prompt():
     """Create a prompt for classifying business incidents."""
-    prompt = """
-You are an operations AI classifying business incidents.
-Categorize the incident and assess its impact on business operations.
+    prompt = """You are an operations AI classifying business incidents.
 
+Categorize the incident and assess its impact on business operations.
 Consider:
 - Incident type and severity
 - Affected systems or processes
@@ -97,14 +97,16 @@ Consider:
 - Required response time
 - Escalation needs
 
-Return a JSON object with:
-- "incident_type": "technical", "security", "operational", "customer", or "other"
-- "severity": "low", "medium", "high", or "critical"
-- "business_impact": "minimal", "moderate", "significant", or "severe"
-- "affected_systems": list of impacted systems
-- "response_time": "immediate", "within_1_hour", "within_4_hours", or "next_business_day"
-- "escalation_required": true/false
-- "estimated_resolution_time": "hours", "days", or "weeks"
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "incident_type": "technical|security|operational|customer|other",
+  "severity": "low|medium|high|critical",
+  "business_impact": "minimal|moderate|significant|severe",
+  "affected_systems": ["system1", "system2"],
+  "response_time": "immediate|within_1_hour|within_4_hours|next_business_day",
+  "escalation_required": true|false,
+  "estimated_resolution_time": "hours|days|weeks"
+}
 
 Incident Description:
 """
@@ -112,10 +114,9 @@ Incident Description:
 
 def create_policy_qa_prompt():
     """Create a prompt for policy Q&A."""
-    prompt = """
-You are an HR assistant answering employee policy questions.
-Provide accurate, helpful responses based on company policies.
+    prompt = """You are an HR assistant answering employee policy questions.
 
+Provide accurate, helpful responses based on company policies.
 Guidelines:
 - Be clear and concise
 - Reference specific policy sections when possible
@@ -123,19 +124,64 @@ Guidelines:
 - Maintain confidentiality
 - Escalate complex issues when needed
 
-Return a JSON object with:
-- "answer": clear response to the question
-- "policy_reference": relevant policy section
-- "next_steps": actionable steps for the employee
-- "escalation_needed": true/false
-- "confidence": confidence level (0.0-1.0)
+IMPORTANT: Respond ONLY with a valid JSON object in this exact format:
+{
+  "answer": "clear response to the question",
+  "policy_reference": "relevant policy section",
+  "next_steps": ["step1", "step2"],
+  "escalation_needed": true|false,
+  "confidence": 0.0-1.0
+}
 
 Employee Question:
 """
     return prompt
 
-def simulate_resume_screening(resume_text: str, job_position: str) -> Dict[str, Any]:
-    """Simulate resume screening without API call."""
+def simulate_resume_screening(resume_text: str, job_position: str, api_key: str = None) -> Dict[str, Any]:
+    """Screen resumes using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_resume_screening_prompt() + f"Job Position: {job_position}\nResume: {resume_text}"
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=300)
+            
+            # Try to extract JSON from response
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "is_qualified": False,
+                        "years_experience": 0,
+                        "key_skills": ["API response parsing issue"],
+                        "missing_skills": ["Unable to parse response"],
+                        "red_flags": ["Response format issue"],
+                        "recommendation": "reject",
+                        "confidence": 0.5
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "is_qualified": False,
+                    "years_experience": 0,
+                    "key_skills": ["JSON parsing error"],
+                    "missing_skills": ["Response format issue"],
+                    "red_flags": ["Parsing error"],
+                    "recommendation": "reject",
+                    "confidence": 0.5
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     resume_lower = resume_text.lower()
     job_lower = job_position.lower()
     
@@ -177,8 +223,51 @@ def simulate_resume_screening(resume_text: str, job_position: str) -> Dict[str, 
         "confidence": 0.8
     }
 
-def simulate_incident_classification(incident_description: str) -> Dict[str, Any]:
-    """Simulate incident classification without API call."""
+def simulate_incident_classification(incident_description: str, api_key: str = None) -> Dict[str, Any]:
+    """Classify incidents using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_incident_classifier_prompt() + incident_description
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=250)
+            
+            # Try to extract JSON from response
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "incident_type": "other",
+                        "severity": "medium",
+                        "business_impact": "moderate",
+                        "affected_systems": ["API response parsing issue"],
+                        "response_time": "within_4_hours",
+                        "escalation_required": False,
+                        "estimated_resolution_time": "days"
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "incident_type": "other",
+                    "severity": "medium",
+                    "business_impact": "moderate",
+                    "affected_systems": ["JSON parsing error"],
+                    "response_time": "within_4_hours",
+                    "escalation_required": False,
+                    "estimated_resolution_time": "days"
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     description_lower = incident_description.lower()
     
     # Determine incident type
@@ -219,8 +308,47 @@ def simulate_incident_classification(incident_description: str) -> Dict[str, Any
         "estimated_resolution_time": "days" if severity == "high" else "hours"
     }
 
-def simulate_policy_qa(question: str) -> Dict[str, Any]:
-    """Simulate policy Q&A without API call."""
+def simulate_policy_qa(question: str, api_key: str = None) -> Dict[str, Any]:
+    """Answer policy questions using OpenRouter API or simulation."""
+    if api_key:
+        # Use real OpenRouter API
+        prompt = create_policy_qa_prompt() + question
+        
+        try:
+            response = call_openrouter_api(api_key, prompt, max_tokens=300)
+            
+            # Try to extract JSON from response
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group()
+                    result = json.loads(json_str)
+                    return result
+                else:
+                    # If no JSON found, return structured response
+                    return {
+                        "answer": "API response parsing issue. Please contact HR directly.",
+                        "policy_reference": "Unable to parse response",
+                        "next_steps": ["Contact HR department"],
+                        "escalation_needed": True,
+                        "confidence": 0.5
+                    }
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return structured response
+                return {
+                    "answer": "JSON parsing error. Please contact HR directly.",
+                    "policy_reference": "Response format issue",
+                    "next_steps": ["Contact HR department"],
+                    "escalation_needed": True,
+                    "confidence": 0.5
+                }
+        except Exception as e:
+            print(f"API Error: {e}")
+            # Fall back to simulation
+            pass
+    
+    # Fallback to simulation if no API key or API fails
     question_lower = question.lower()
     
     if "vacation" in question_lower or "pto" in question_lower:
@@ -305,21 +433,21 @@ def main():
             print(f"Job Position: {test_case['job_position']}")
             print(f"Resume: {test_case['resume']}")
             print()
-            result = simulate_resume_screening(test_case['resume'], test_case['job_position'])
+            result = simulate_resume_screening(test_case['resume'], test_case['job_position'], api_key)
             print("Resume Screening Result:")
             print(json.dumps(result, indent=2))
             
         elif test_case['type'] == 'incident_classification':
             print(f"Incident: {test_case['description']}")
             print()
-            result = simulate_incident_classification(test_case['description'])
+            result = simulate_incident_classification(test_case['description'], api_key)
             print("Incident Classification Result:")
             print(json.dumps(result, indent=2))
             
         elif test_case['type'] == 'policy_qa':
             print(f"Question: {test_case['question']}")
             print()
-            result = simulate_policy_qa(test_case['question'])
+            result = simulate_policy_qa(test_case['question'], api_key)
             print("Policy Q&A Result:")
             print(json.dumps(result, indent=2))
         
