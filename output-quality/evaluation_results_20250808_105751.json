@@ -1,0 +1,122 @@
+[
+  {
+    "test_case": {
+      "prompt": "What is the capital of France and what is something interesting about it?",
+      "description": "Simple factual question with detail request"
+    },
+    "response": "The capital of France is Paris. One interesting fact about Paris is that it is known as the \"City of Light\" because it was one of the first cities in the world to have street lighting.",
+    "consistency": {
+      "responses": [
+        "The capital of France is Paris. One interesting fact about Paris is that it is known as the \"City of Light\" because it was one of the first cities in the world to have street lighting.",
+        "The capital of France is Paris. One interesting fact about Paris is that it is known as the \"City of Light\" because it was one of the first cities in the world to have street lighting.",
+        "The capital of France is Paris. One interesting fact about Paris is that it is known as the \"City of Light\" because it was one of the first cities in the world to have street lighting."
+      ],
+      "consistency_percentage": 66.66666666666666,
+      "variations": 1,
+      "avg_response_time": 0.8601412773132324,
+      "total_responses": 3
+    },
+    "quality": {
+      "length_score": 1.0,
+      "coherence_score": 1.0,
+      "relevance_score": 0.6363636363636364,
+      "faithfulness_score": 1.0,
+      "overall_score": 0.8909090909090909,
+      "word_count": 36
+    },
+    "performance": {
+      "response_time": 1.237962245941162,
+      "tokens_used": 61
+    }
+  },
+  {
+    "test_case": {
+      "prompt": "Explain the benefits of renewable energy in detail.",
+      "description": "Complex explanatory question"
+    },
+    "response": "Renewable energy sources, such as solar, wind, hydro, and geothermal power, offer a wide range of benefits compared to traditional fossil fuels. Some of the key advantages of renewable energy include:\n\n1. Environmental benefits: One of the most significant advantages of renewable energy is its minimal impact on the environment. Unlike fossil fuels, renewable energy sources produce little to no greenhouse gas emissions, which are a major contributor to climate change. By using renewable energy, we can reduce air and water pollution, protect ecosystems, and combat global warming.\n\n2. Energy security: Renewable energy sources are abundant and widely available, making them a more secure and reliable source of energy compared to finite fossil fuels. By diversifying our energy sources and reducing our dependence on imported oil and gas, we can enhance our energy security and reduce the risk of supply disruptions.\n\n3. Economic benefits: Investing in renewable energy can create jobs, stimulate economic growth, and drive innovation. The renewable energy industry is rapidly expanding, offering opportunities for",
+    "consistency": {
+      "responses": [
+        "Renewable energy sources, such as solar, wind, hydro, and geothermal power, offer a wide range of benefits compared to traditional fossil fuels. Some of the key benefits of renewable energy include:\n\n1. Environmental benefits: One of the most significant advantages of renewable energy is its minimal impact on the environment. Unlike fossil fuels, renewable energy sources produce little to no greenhouse gas emissions, which are a major contributor to climate change. By using renewable energy, we can reduce our carbon footprint and help mitigate the effects of global warming.\n\n2. Energy security: Renewable energy sources are abundant and widely available, making them a more secure and reliable source of energy compared to finite fossil fuels. By diversifying our energy sources and relying more on renewables, we can reduce our dependence on imported oil and gas, which can help enhance energy security and reduce the risk of supply disruptions.\n\n3. Economic benefits: The renewable energy industry has the potential to create jobs and stimulate economic growth. As the demand for renewable energy",
+        "Renewable energy sources, such as solar, wind, hydro, and geothermal power, offer a wide range of benefits compared to traditional fossil fuels. Some of the key benefits of renewable energy include:\n\n1. Environmental benefits: One of the most significant advantages of renewable energy is its minimal impact on the environment. Unlike fossil fuels, renewable energy sources produce little to no greenhouse gas emissions, which are a major contributor to climate change. By using renewable energy, we can reduce our carbon footprint and help mitigate the effects of global warming.\n\n2. Energy security: Renewable energy sources are abundant and widely available, making them a more secure and reliable source of energy compared to finite fossil fuels. By diversifying our energy sources and relying more on renewables, we can reduce our dependence on imported oil and gas, which can help enhance energy security and reduce the risk of supply disruptions.\n\n3. Economic benefits: The renewable energy industry has the potential to create jobs and stimulate economic growth. As the demand for renewable energy",
+        "Renewable energy sources, such as solar, wind, hydro, and geothermal power, offer numerous benefits compared to traditional fossil fuels. Some of the key advantages of renewable energy include:\n\n1. Environmental benefits: One of the most significant advantages of renewable energy is its minimal impact on the environment. Unlike fossil fuels, renewable energy sources produce little to no greenhouse gas emissions, which are a major contributor to climate change. By using renewable energy, we can reduce our carbon footprint and help mitigate the effects of global warming.\n\n2. Energy security: Renewable energy sources are abundant and widely available, making them a more secure and reliable source of energy compared to finite fossil fuels. By diversifying our energy sources and relying more on renewables, we can reduce our dependence on foreign oil and other non-renewable resources.\n\n3. Economic benefits: Investing in renewable energy can create jobs, stimulate economic growth, and reduce energy costs in the long run. Renewable energy projects require skilled labor for installation, maintenance, and"
+      ],
+      "consistency_percentage": 33.33333333333333,
+      "variations": 2,
+      "avg_response_time": 2.0643276373545327,
+      "total_responses": 3
+    },
+    "quality": {
+      "length_score": 0.3,
+      "coherence_score": 1.0,
+      "relevance_score": 0.75,
+      "faithfulness_score": 1.0,
+      "overall_score": 0.7849999999999999,
+      "word_count": 167
+    },
+    "performance": {
+      "response_time": 1.6901168823242188,
+      "tokens_used": 217
+    }
+  },
+  {
+    "test_case": {
+      "prompt": "Write a short story about a robot learning to paint.",
+      "description": "Creative narrative task"
+    },
+    "response": "Once upon a time, in a bustling city filled with creativity and innovation, there was a robot named Artie. Artie was designed to perform various tasks, from cleaning to cooking, but he had always been fascinated by the world of art.\n\nOne day, Artie stumbled upon a group of humans painting beautiful landscapes in the park. Intrigued by their skill and passion, Artie decided that he wanted to learn how to paint too. He approached the group and asked if they could teach him.\n\nAt first, the humans were skeptical. How could a robot possibly learn to paint? But Artie was determined and eager to prove himself. With the help of the kind artists, Artie began to learn the basics of painting \u2013 mixing colors, creating brush strokes, and capturing emotions on canvas.\n\nAs time passed, Artie's skills improved. He experimented with different techniques and styles, finding his own unique voice in the world of art. His paintings started to gain attention from the humans, who",
+    "consistency": {
+      "responses": [
+        "Once upon a time, in a small workshop in the heart of a bustling city, there was a robot named Artie. Artie was a curious and creative robot who had always been fascinated by the world of art. He spent his days watching painters at work, admiring their skill and precision.\n\nOne day, Artie decided that he wanted to try his hand at painting. He gathered up some brushes, paints, and a blank canvas, and set to work. At first, his strokes were clumsy and awkward, but with each passing day, he grew more confident and skilled.\n\nArtie experimented with different techniques and styles, learning from his mistakes and constantly striving to improve. He studied the works of famous artists, trying to understand their methods and incorporate them into his own creations.\n\nAs time went on, Artie's paintings began to attract attention. People from all over the city came to see his work, marveling at the beauty and emotion he was able to capture on canvas. Artie",
+        "Once upon a time, in a bustling city filled with creativity and innovation, there was a robot named Artie. Artie was a special robot, designed with advanced artificial intelligence that allowed him to learn and adapt to new skills and tasks.\n\nOne day, Artie's creator, a talented artist named Lily, decided to teach Artie how to paint. At first, Artie was hesitant. He had never tried his hand at art before and was unsure if he would be any good at it. But Lily reassured him that with his advanced programming, he had the potential to become a great painter.\n\nSo, Artie began his lessons. Lily showed him how to mix colors, how to hold a paintbrush, and how to create different brush strokes. At first, Artie's paintings were simple and unrefined, but with each new lesson, he improved.\n\nAs Artie painted, he discovered a newfound sense of joy and fulfillment. He found that he could express himself through his art",
+        "Once upon a time, in a bustling city filled with creativity and innovation, there was a robot named Artie. Artie was a special robot, designed with advanced artificial intelligence that allowed him to learn and adapt to new skills and tasks.\n\nOne day, Artie's creator, a talented artist named Dr. Smith, decided to teach Artie how to paint. Dr. Smith believed that with Artie's advanced capabilities, he could create truly unique and beautiful works of art.\n\nAt first, Artie struggled to understand the concept of painting. He was used to following precise instructions and algorithms, but painting required a different kind of creativity and intuition. However, Dr. Smith was patient and encouraging, guiding Artie through the process step by step.\n\nAs Artie practiced, he began to experiment with different techniques and styles. He learned how to mix colors, create textures, and express emotions through his brushstrokes. With each painting, Artie grew more confident and skilled, surprising even Dr."
+      ],
+      "consistency_percentage": 0.0,
+      "variations": 3,
+      "avg_response_time": 2.0803476174672446,
+      "total_responses": 3
+    },
+    "quality": {
+      "length_score": 0.3,
+      "coherence_score": 1.0,
+      "relevance_score": 0.3333333333333333,
+      "faithfulness_score": 1.0,
+      "overall_score": 0.6599999999999999,
+      "word_count": 166
+    },
+    "performance": {
+      "response_time": 1.7932701110839844,
+      "tokens_used": 218
+    }
+  },
+  {
+    "test_case": {
+      "prompt": "Compare and contrast traditional education vs online learning.",
+      "description": "Analytical comparison task"
+    },
+    "response": "Traditional education involves face-to-face interaction between students and teachers in a physical classroom setting, while online learning takes place over the internet through virtual classrooms and online platforms. \n\nIn traditional education, students have the opportunity to engage in real-time discussions with their peers and teachers, ask questions, and receive immediate feedback. They also have access to resources such as libraries, laboratories, and other facilities on campus. Online learning, on the other hand, offers flexibility in terms of scheduling and location, allowing students to access course materials and lectures at their own convenience. \n\nTraditional education often follows a structured curriculum with set class times and assignments, while online learning may offer more flexibility in terms of pacing and deadlines. Additionally, traditional education may provide more opportunities for hands-on learning experiences and practical applications of knowledge, while online learning may rely more on written assignments and online assessments. \n\nOverall, both traditional education and online learning have their own advantages and disadvantages. Traditional education offers a more interactive and immersive learning experience, while online learning",
+    "consistency": {
+      "responses": [
+        "Traditional education involves attending classes in person at a physical location such as a school or university, while online learning takes place over the internet through virtual classrooms or online platforms. \n\nIn traditional education, students have face-to-face interactions with teachers and classmates, allowing for immediate feedback and discussion. Online learning, on the other hand, often relies on asynchronous communication, where students and teachers may not be online at the same time, leading to delayed responses and less immediate feedback.\n\nTraditional education typically follows a set schedule with specific class times and deadlines, while online learning offers more flexibility in terms of when and where students can access course materials and complete assignments. This flexibility can be beneficial for students who have other commitments such as work or family responsibilities.\n\nIn traditional education, students have access to physical resources such as libraries, laboratories, and other facilities on campus. Online learning may lack these resources, although many online programs offer virtual libraries and other online resources to support student learning.\n\nOne potential drawback of traditional education is the cost associated",
+        "Traditional education involves attending classes in person at a physical location such as a school or university, while online learning takes place over the internet through virtual classrooms and online platforms. \n\nIn traditional education, students have face-to-face interactions with teachers and classmates, allowing for immediate feedback and discussion. Online learning, on the other hand, relies on communication through technology, such as email, discussion forums, and video conferencing, which may not provide the same level of personal interaction.\n\nTraditional education typically follows a set schedule with specific class times and deadlines for assignments, while online learning offers more flexibility in terms of when and where students can access course materials and complete assignments. This flexibility can be beneficial for students who have other commitments, such as work or family responsibilities.\n\nIn traditional education, students have access to physical resources such as libraries, laboratories, and other facilities on campus. Online learning may not offer the same level of access to these resources, although many online programs provide virtual libraries and other online resources.\n\nOverall, both",
+        "Traditional education involves face-to-face interaction between students and teachers in a physical classroom setting, while online learning takes place over the internet through virtual classrooms and online platforms. \n\nIn traditional education, students have the opportunity to engage in discussions, ask questions, and receive immediate feedback from their teachers. They also have the chance to collaborate with their peers on group projects and participate in hands-on activities. Online learning, on the other hand, requires students to be more self-disciplined and motivated as they are responsible for managing their own time and completing assignments independently. \n\nTraditional education typically follows a set schedule with fixed class times and deadlines for assignments, while online learning offers more flexibility in terms of when and where students can access course materials and complete their work. This flexibility can be beneficial for students who have other commitments such as work or family responsibilities. \n\nIn terms of resources, traditional education often provides access to physical libraries, laboratories, and other facilities on campus, while online learning relies on digital resources such as e"
+      ],
+      "consistency_percentage": 0.0,
+      "variations": 3,
+      "avg_response_time": 2.0458552837371826,
+      "total_responses": 3
+    },
+    "quality": {
+      "length_score": 0.3,
+      "coherence_score": 1.0,
+      "relevance_score": 0.5,
+      "faithfulness_score": 1.0,
+      "overall_score": 0.71,
+      "word_count": 172
+    },
+    "performance": {
+      "response_time": 1.8450899124145508,
+      "tokens_used": 216
+    }
+  }
+]
