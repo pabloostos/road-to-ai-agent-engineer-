@@ -40,7 +40,7 @@ By completing this module, you will learn:
 
 ### Prerequisites
 - Python 3.8+
-- OpenAI API key (or other LLM provider)
+- OpenRouter API key (access to multiple LLM providers)
 - Basic understanding of API calls and JSON
 
 ### Installation
@@ -49,7 +49,7 @@ By completing this module, you will learn:
 pip install -r requirements.txt
 
 # Set up environment variables
-export OPENAI_API_KEY="your-api-key-here"
+export OPENROUTER_API_KEY="your-openrouter-api-key-here"
 ```
 
 ### Quick Start
@@ -81,8 +81,8 @@ export OPENAI_API_KEY="your-api-key-here"
 
 ## 🔧 Tools & Technologies
 
-- **tiktoken**: Token counting for OpenAI models
-- **OpenAI API**: LLM service integration
+- **tiktoken**: Token counting for OpenAI-compatible models
+- **OpenRouter API**: Multi-provider LLM service integration
 - **JSON/CSV**: Structured data logging
 - **Python**: Core implementation language
 
@@ -124,9 +124,10 @@ This module prepares you for:
 
 ## 📚 Additional Resources
 
-- [OpenAI Pricing](https://openai.com/pricing)
+- [OpenRouter Pricing](https://openrouter.ai/docs#pricing)
+- [OpenRouter Documentation](https://openrouter.ai/docs)
 - [tiktoken Documentation](https://github.com/openai/tiktoken)
-- [Token Usage Best Practices](https://platform.openai.com/docs/guides/rate-limits)
+- [Token Usage Best Practices](https://openrouter.ai/docs#best-practices)
 
 ---
 

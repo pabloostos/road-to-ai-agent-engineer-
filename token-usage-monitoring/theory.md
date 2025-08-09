@@ -50,7 +50,7 @@ Implement a wrapper function around API calls to:
 
 ### 4.2 Cloud Monitoring
 
-- Use provider dashboards (e.g., OpenAI usage page, Azure Monitor, AWS CloudWatch).
+- Use provider dashboards (e.g., OpenRouter dashboard, Azure Monitor, AWS CloudWatch).
 - Integrate billing APIs for automated alerts.
 
 ---
@@ -64,7 +64,7 @@ Most providers charge per 1,000 tokens.
 Cost = (Tokens / 1000) × Price per 1000 tokens
 ```
 
-**Example (OpenAI GPT-4 8K, $0.03 / 1K input, $0.06 / 1K output):**
+**Example (OpenRouter GPT-4, pricing varies by model):**
 - Prompt: 500 tokens → $0.015
 - Completion: 700 tokens → $0.042
 - Total: $0.057
@@ -73,8 +73,8 @@ Cost = (Tokens / 1000) × Price per 1000 tokens
 
 ## 6. Tools & Libraries
 
-- **tiktoken** – Token counting for OpenAI models.
-- **OpenAI Billing API** – Track spending in near real time.
+- **tiktoken** – Token counting for OpenAI-compatible models.
+- **OpenRouter API** – Access multiple LLM providers with unified interface.
 - **LangChain callbacks** – Monitor tokens per chain/agent call.
 - **Custom dashboards** – Use Grafana or Tableau for visualization.
 
