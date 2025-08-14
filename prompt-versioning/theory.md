@@ -1,7 +1,5 @@
 # Masterclass: Prompt Versioning in AI Projects
 
-**By Prof. ChatGPT — Department of AI Engineering**
-
 ## 1. Introduction
 
 Imagine training a Large Language Model (LLM) for your project, tweaking prompts, and getting wildly different outputs each time.
