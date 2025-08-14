@@ -1,0 +1,47 @@
+{
+  "experiment_id": "customer_email_1.0_1755166356",
+  "test_inputs": [
+    "My order hasn't arrived yet and I'm very frustrated",
+    "The product I received is defective and doesn't work",
+    "I want to cancel my subscription immediately",
+    "Can you help me with a billing question?"
+  ],
+  "responses": [
+    {
+      "input": "My order hasn't arrived yet and I'm very frustrated",
+      "response": "Dear [Customer's Name],\n\nThank you for reaching out and we sincerely apologize for the delay you've experienced with your order. We understand the frustration this may have caused and we're here to help.\n\nWe've checked our system and it appears that your order is currently in transit. Here are the current details:\n\n- Order Number: [Order Number]\n- Estimated Delivery Date: [Original Estimate]\n- Current Status: In Transit\n\nGiven the current circumstances, it's possible that your order may be delayed due to circumstances beyond our control, such as weather conditions or carrier delays. We're actively monitoring the situation and will keep you updated.\n\nTo ensure we're providing you with the most accurate information, could you please share the tracking number provided in your shipping confirmation email? This will allow us to give you the most up-to-date information about your order's location.\n\nWe truly regret any inconvenience this may have caused and appreciate your patience as we work to resolve this matter. If you have any other questions or concerns, please don't hesitate to ask. We're here to help!\n\nBest regards,\n\n[Your Name]\n[Your Position]\n[Company Name]\n[Contact Information]",
+      "response_time": 13.11206603050232,
+      "timestamp": "2025-08-14T12:12:49.576973",
+      "model_params": {}
+    },
+    {
+      "input": "The product I received is defective and doesn't work",
+      "response": "Dear [Customer's Name],\n\nThank you for reaching out to us regarding the issue you're experiencing with your recent purchase. We're truly sorry to hear that the product you received is defective and not working as expected. We understand the inconvenience this may have caused and appreciate your patience as we work to resolve this matter for you.\n\nTo assist you better, could you please provide us with the following details:\n\n1. The order number or the email address used for the purchase.\n2. A brief description of the issue you're encountering.\n3. Any photographs or videos that might help us understand the problem better.\n\nOnce we have this information, we can initiate the return process or provide a replacement, whichever is most convenient for you. We aim to ensure your complete satisfaction and will do our best to make this right.\n\nPlease rest assured that we take quality and customer satisfaction seriously, and we're committed to resolving this issue promptly. If you have any other questions or concerns in the meantime, please don't hesitate to ask.\n\nLooking forward to your response.\n\nBest regards,\n\n[Your Name]\n[Your Position]\n[Company Name]\n[Contact Information]",
+      "response_time": 10.348645687103271,
+      "timestamp": "2025-08-14T12:12:59.925802",
+      "model_params": {}
+    },
+    {
+      "input": "I want to cancel my subscription immediately",
+      "response": "Dear [Customer's Name],\n\nThank you for reaching out to us regarding your subscription. We're sorry to hear that you've decided to cancel your service.\n\nTo proceed with the cancellation, we kindly ask you to provide us with your account details or the email address associated with your subscription. This will help us locate your account and process your request accurately and efficiently.\n\nOnce we have the necessary information, we can guide you through the cancellation process. Please note that you may be asked to confirm your identity for security purposes.\n\nWe genuinely appreciate your time as a valued customer and regret any inconvenience this may have caused. If there's any feedback you'd like to share about your experience or the reason for your cancellation, we would greatly appreciate it as it helps us improve our services.\n\nPlease look forward to our next email with further instructions on how to complete the cancellation process.\n\nBest regards,\n\n[Your Name]\n[Your Position]\n[Company Name]\n[Contact Information]",
+      "response_time": 6.641729831695557,
+      "timestamp": "2025-08-14T12:13:06.567604",
+      "model_params": {}
+    },
+    {
+      "input": "Can you help me with a billing question?",
+      "response": "Certainly! Here's a professional response you could use:\n\n---\n\nDear [Customer's Name],\n\nThank you for reaching out to us regarding your billing question. We appreciate your patience and are here to assist you.\n\nTo better address your concern, could you please provide more details about the issue you're experiencing? For example, are you looking for information about a specific charge, payment due date, or perhaps assistance with updating your billing information?\n\nOnce we have a clearer understanding of your question, we'll be able to provide you with the most accurate and helpful response. You can also feel free to include any relevant details such as your account number or invoice reference number to help us locate your account more quickly.\n\nWe look forward to hearing back from you so we can resolve this matter promptly.\n\nBest regards,\n\n[Your Full Name]\n[Your Position]\n[Your Contact Information]\n\n---",
+      "response_time": 14.783185005187988,
+      "timestamp": "2025-08-14T12:13:21.350899",
+      "model_params": {}
+    }
+  ],
+  "metrics": {
+    "total_tests": 4,
+    "successful_tests": 4,
+    "success_rate": 1.0,
+    "avg_response_time": 11.221406638622284,
+    "avg_response_length": 1083.0
+  },
+  "timestamp": "2025-08-14T12:12:36.464856"
+}
