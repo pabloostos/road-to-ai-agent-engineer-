@@ -1,0 +1,12 @@
+# Embeddings Creation Module Dependencies
+# Core libraries for embeddings and vector operations
+
+openai>=1.0.0
+numpy>=1.21.0
+python-dotenv>=0.19.0
+tiktoken>=0.5.0
+
+# Optional: For advanced features
+# scikit-learn>=1.0.0  # For clustering
+# matplotlib>=3.5.0    # For visualization
+# pandas>=1.3.0        # For data manipulation
