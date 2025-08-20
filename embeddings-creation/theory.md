@@ -1,4 +1,4 @@
-# 🎓 Masterclass: Embeddings Creation with the OpenAI API
+# 🎓 Masterclass: Embeddings Creation with the OpenRouter API
 
 ## 1. Introduction
 
@@ -36,21 +36,24 @@ By the end of this lecture, you will not only understand the theory behind embed
 - **Recommendation Systems:** "Users who liked this also liked…"
 - **Chatbots:** Enhance conversation by fetching relevant context.
 
-## 5. Practical Example: Generating Embeddings with OpenAI
+## 5. Practical Example: Generating Embeddings with OpenRouter
 
 ### Step 1: Install Dependencies
 ```bash
-pip install openai
+pip install openai requests
 ```
 
 ### Step 2: Generate Embeddings in Python
 ```python
-from openai import OpenAI
+import requests
 import json
 import os
 
-# Initialize client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Initialize OpenRouter client
+headers = {
+    "Authorization": f"Bearer {os.getenv('OPENROUTER_API_KEY')}",
+    "Content-Type": "application/json"
+}
 
 # Example texts
 texts = [
@@ -62,11 +65,16 @@ texts = [
 # Generate embeddings
 embeddings = []
 for text in texts:
-    response = client.embeddings.create(
-        model="text-embedding-ada-002",
-        input=text
+    response = requests.post(
+        "https://openrouter.ai/api/v1/embeddings",
+        headers=headers,
+        json={
+            "model": "openai/text-embedding-ada-002",
+            "input": text
+        }
     )
-    vector = response.data[0].embedding
+    data = response.json()
+    vector = data["data"][0]["embedding"]
     embeddings.append({"text": text, "embedding": vector})
 
 # Save to folder
@@ -76,7 +84,7 @@ with open("embeddings-examples/embeddings.json", "w") as f:
 ```
 
 This script:
-- Generates embeddings for sample texts.
+- Generates embeddings for sample texts using OpenRouter.
 - Stores them in embeddings-examples/embeddings.json.
 
 ## 6. Retrieval & Similarity Search
@@ -115,13 +123,13 @@ print("Similarity between text 1 and 2:", sim)
 - Estimate cost = (#tokens × price per 1K tokens).
 - Cache embeddings: don't recompute if the text already exists.
 
-## 8. Alternatives to OpenAI
+## 8. Alternatives to OpenRouter
 
 - **Sentence Transformers (Hugging Face):** Local embeddings, free to use.
 - **FAISS:** Facebook's library for similarity search.
 - **Weaviate / Milvus:** Vector databases with integrated embedding pipelines.
 
-💡 **Tradeoff:** OpenAI provides scalability + quality, while local models provide cost efficiency + control.
+💡 **Tradeoff:** OpenRouter provides scalability + quality, while local models provide cost efficiency + control.
 
 ## 9. Real-World Applications
 

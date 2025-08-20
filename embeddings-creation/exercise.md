@@ -8,15 +8,15 @@ Build a comprehensive embeddings system that demonstrates:
 4. **Cost Monitoring** - Track token usage and costs
 
 ## Requirements
-- **API:** OpenAI Embeddings API
-- **Libraries:** `openai`, `numpy`, `json`, `datetime`, `python-dotenv`
+- **API:** OpenRouter Embeddings API
+- **Libraries:** `requests`, `numpy`, `json`, `datetime`, `python-dotenv`
 - **Skills:** Vector operations, similarity metrics, data processing
 
 ## Exercise Structure
 
 ### Part 1: Embedding Generator
 Create a class that:
-- Generates embeddings for input texts
+- Generates embeddings for input texts using OpenRouter
 - Stores them with metadata (text, timestamp, token count)
 - Implements caching to avoid re-computing existing embeddings
 - Tracks costs per embedding
@@ -66,12 +66,12 @@ sample_texts = [
 
 ## Bonus Challenges
 - **Performance Optimization** - Batch processing for multiple texts
-- **Alternative Models** - Try different embedding models
+- **Alternative Models** - Try different embedding models available on OpenRouter
 - **Visualization** - Plot embeddings in 2D space using PCA
 - **Real-time Search** - Build a simple search interface
 
 ## Success Criteria
-✅ Generate embeddings for all sample texts  
+✅ Generate embeddings for all sample texts using OpenRouter  
 ✅ Perform similarity search with meaningful results  
 ✅ Group texts into logical clusters  
 ✅ Track and report costs accurately  
@@ -79,7 +79,7 @@ sample_texts = [
 
 ## Learning Outcomes
 By completing this exercise, you'll understand:
-- How to generate and store embeddings efficiently
+- How to generate and store embeddings efficiently using OpenRouter
 - Methods for measuring semantic similarity
 - Techniques for organizing and searching vector data
 - Cost management strategies for embedding APIs
