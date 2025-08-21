@@ -1,0 +1,81 @@
+{
+  "query": "luxury vehicles with premium features",
+  "bm25_results": [
+    {
+      "rank": 1,
+      "doc_id": "doc_3",
+      "document": "Luxury cars with hybrid engines and premium features",
+      "hybrid_score": 1.0,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.5552
+    },
+    {
+      "rank": 2,
+      "doc_id": "doc_1",
+      "document": "Electric vehicles with long battery life and fast charging",
+      "hybrid_score": 0.4018,
+      "bm25_score": 0.4018,
+      "tfidf_score": 0.1276
+    },
+    {
+      "rank": 3,
+      "doc_id": "doc_6",
+      "document": "Family sedans with spacious interiors and comfort features",
+      "hybrid_score": 0.3074,
+      "bm25_score": 0.3074,
+      "tfidf_score": 0.1016
+    }
+  ],
+  "tfidf_results": [
+    {
+      "rank": 1,
+      "doc_id": "doc_3",
+      "document": "Luxury cars with hybrid engines and premium features",
+      "hybrid_score": 0.5552,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.5552
+    },
+    {
+      "rank": 2,
+      "doc_id": "doc_1",
+      "document": "Electric vehicles with long battery life and fast charging",
+      "hybrid_score": 0.1276,
+      "bm25_score": 0.4018,
+      "tfidf_score": 0.1276
+    },
+    {
+      "rank": 3,
+      "doc_id": "doc_6",
+      "document": "Family sedans with spacious interiors and comfort features",
+      "hybrid_score": 0.1016,
+      "bm25_score": 0.3074,
+      "tfidf_score": 0.1016
+    }
+  ],
+  "hybrid_results": [
+    {
+      "rank": 1,
+      "doc_id": "doc_3",
+      "document": "Luxury cars with hybrid engines and premium features",
+      "hybrid_score": 0.7776,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.5552
+    },
+    {
+      "rank": 2,
+      "doc_id": "doc_1",
+      "document": "Electric vehicles with long battery life and fast charging",
+      "hybrid_score": 0.2647,
+      "bm25_score": 0.4018,
+      "tfidf_score": 0.1276
+    },
+    {
+      "rank": 3,
+      "doc_id": "doc_6",
+      "document": "Family sedans with spacious interiors and comfort features",
+      "hybrid_score": 0.2045,
+      "bm25_score": 0.3074,
+      "tfidf_score": 0.1016
+    }
+  ]
+}

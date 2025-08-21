@@ -1,0 +1,81 @@
+{
+  "query": "cheap hybrid vehicles",
+  "bm25_results": [
+    {
+      "rank": 1,
+      "doc_id": "doc_1",
+      "document": "Electric vehicles with long battery life and fast charging",
+      "hybrid_score": 1.0,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1681
+    },
+    {
+      "rank": 2,
+      "doc_id": "doc_2",
+      "document": "Cheap used cars in excellent condition for budget buyers",
+      "hybrid_score": 1.0,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1724
+    },
+    {
+      "rank": 3,
+      "doc_id": "doc_3",
+      "document": "Luxury cars with hybrid engines and premium features",
+      "hybrid_score": 0.6998,
+      "bm25_score": 0.6998,
+      "tfidf_score": 0.1419
+    }
+  ],
+  "tfidf_results": [
+    {
+      "rank": 1,
+      "doc_id": "doc_2",
+      "document": "Cheap used cars in excellent condition for budget buyers",
+      "hybrid_score": 0.1724,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1724
+    },
+    {
+      "rank": 2,
+      "doc_id": "doc_1",
+      "document": "Electric vehicles with long battery life and fast charging",
+      "hybrid_score": 0.1681,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1681
+    },
+    {
+      "rank": 3,
+      "doc_id": "doc_3",
+      "document": "Luxury cars with hybrid engines and premium features",
+      "hybrid_score": 0.1419,
+      "bm25_score": 0.6998,
+      "tfidf_score": 0.1419
+    }
+  ],
+  "hybrid_results": [
+    {
+      "rank": 1,
+      "doc_id": "doc_2",
+      "document": "Cheap used cars in excellent condition for budget buyers",
+      "hybrid_score": 0.5862,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1724
+    },
+    {
+      "rank": 2,
+      "doc_id": "doc_1",
+      "document": "Electric vehicles with long battery life and fast charging",
+      "hybrid_score": 0.584,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1681
+    },
+    {
+      "rank": 3,
+      "doc_id": "doc_3",
+      "document": "Luxury cars with hybrid engines and premium features",
+      "hybrid_score": 0.4209,
+      "bm25_score": 0.6998,
+      "tfidf_score": 0.1419
+    }
+  ]
+}

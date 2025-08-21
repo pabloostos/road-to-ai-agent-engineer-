@@ -1,0 +1,81 @@
+{
+  "query": "electric cars with long range",
+  "bm25_results": [
+    {
+      "rank": 1,
+      "doc_id": "doc_1",
+      "document": "Electric vehicles with long battery life and fast charging",
+      "hybrid_score": 1.0,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.3616
+    },
+    {
+      "rank": 2,
+      "doc_id": "doc_7",
+      "document": "Trucks with powerful engines and towing capacity",
+      "hybrid_score": 0.1128,
+      "bm25_score": 0.1128,
+      "tfidf_score": 0.0
+    },
+    {
+      "rank": 3,
+      "doc_id": "doc_3",
+      "document": "Luxury cars with hybrid engines and premium features",
+      "hybrid_score": 0.1065,
+      "bm25_score": 0.1065,
+      "tfidf_score": 0.0745
+    }
+  ],
+  "tfidf_results": [
+    {
+      "rank": 1,
+      "doc_id": "doc_1",
+      "document": "Electric vehicles with long battery life and fast charging",
+      "hybrid_score": 0.3616,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.3616
+    },
+    {
+      "rank": 2,
+      "doc_id": "doc_3",
+      "document": "Luxury cars with hybrid engines and premium features",
+      "hybrid_score": 0.0745,
+      "bm25_score": 0.1065,
+      "tfidf_score": 0.0745
+    },
+    {
+      "rank": 3,
+      "doc_id": "doc_5",
+      "document": "Sports cars with high performance and modern technology",
+      "hybrid_score": 0.0715,
+      "bm25_score": 0.1065,
+      "tfidf_score": 0.0715
+    }
+  ],
+  "hybrid_results": [
+    {
+      "rank": 1,
+      "doc_id": "doc_1",
+      "document": "Electric vehicles with long battery life and fast charging",
+      "hybrid_score": 0.6808,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.3616
+    },
+    {
+      "rank": 2,
+      "doc_id": "doc_3",
+      "document": "Luxury cars with hybrid engines and premium features",
+      "hybrid_score": 0.0905,
+      "bm25_score": 0.1065,
+      "tfidf_score": 0.0745
+    },
+    {
+      "rank": 3,
+      "doc_id": "doc_5",
+      "document": "Sports cars with high performance and modern technology",
+      "hybrid_score": 0.089,
+      "bm25_score": 0.1065,
+      "tfidf_score": 0.0715
+    }
+  ]
+}

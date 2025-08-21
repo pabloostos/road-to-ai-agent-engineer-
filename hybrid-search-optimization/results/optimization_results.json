@@ -1,0 +1,202 @@
+{
+  "BM25-Heavy": {
+    "weights": {
+      "alpha": 0.8,
+      "beta": 0.2
+    },
+    "top_result": {
+      "rank": 1,
+      "doc_id": "doc_2",
+      "document": "Cheap used cars in excellent condition for budget buyers",
+      "hybrid_score": 0.8345,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1724
+    },
+    "all_results": [
+      {
+        "rank": 1,
+        "doc_id": "doc_2",
+        "document": "Cheap used cars in excellent condition for budget buyers",
+        "hybrid_score": 0.8345,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1724
+      },
+      {
+        "rank": 2,
+        "doc_id": "doc_1",
+        "document": "Electric vehicles with long battery life and fast charging",
+        "hybrid_score": 0.8336,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1681
+      },
+      {
+        "rank": 3,
+        "doc_id": "doc_3",
+        "document": "Luxury cars with hybrid engines and premium features",
+        "hybrid_score": 0.5882,
+        "bm25_score": 0.6998,
+        "tfidf_score": 0.1419
+      }
+    ]
+  },
+  "BM25-Balanced": {
+    "weights": {
+      "alpha": 0.6,
+      "beta": 0.4
+    },
+    "top_result": {
+      "rank": 1,
+      "doc_id": "doc_2",
+      "document": "Cheap used cars in excellent condition for budget buyers",
+      "hybrid_score": 0.669,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1724
+    },
+    "all_results": [
+      {
+        "rank": 1,
+        "doc_id": "doc_2",
+        "document": "Cheap used cars in excellent condition for budget buyers",
+        "hybrid_score": 0.669,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1724
+      },
+      {
+        "rank": 2,
+        "doc_id": "doc_1",
+        "document": "Electric vehicles with long battery life and fast charging",
+        "hybrid_score": 0.6672,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1681
+      },
+      {
+        "rank": 3,
+        "doc_id": "doc_3",
+        "document": "Luxury cars with hybrid engines and premium features",
+        "hybrid_score": 0.4766,
+        "bm25_score": 0.6998,
+        "tfidf_score": 0.1419
+      }
+    ]
+  },
+  "Equal-Weights": {
+    "weights": {
+      "alpha": 0.5,
+      "beta": 0.5
+    },
+    "top_result": {
+      "rank": 1,
+      "doc_id": "doc_2",
+      "document": "Cheap used cars in excellent condition for budget buyers",
+      "hybrid_score": 0.5862,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1724
+    },
+    "all_results": [
+      {
+        "rank": 1,
+        "doc_id": "doc_2",
+        "document": "Cheap used cars in excellent condition for budget buyers",
+        "hybrid_score": 0.5862,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1724
+      },
+      {
+        "rank": 2,
+        "doc_id": "doc_1",
+        "document": "Electric vehicles with long battery life and fast charging",
+        "hybrid_score": 0.584,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1681
+      },
+      {
+        "rank": 3,
+        "doc_id": "doc_3",
+        "document": "Luxury cars with hybrid engines and premium features",
+        "hybrid_score": 0.4209,
+        "bm25_score": 0.6998,
+        "tfidf_score": 0.1419
+      }
+    ]
+  },
+  "TF-IDF-Balanced": {
+    "weights": {
+      "alpha": 0.4,
+      "beta": 0.6
+    },
+    "top_result": {
+      "rank": 1,
+      "doc_id": "doc_2",
+      "document": "Cheap used cars in excellent condition for budget buyers",
+      "hybrid_score": 0.5035,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1724
+    },
+    "all_results": [
+      {
+        "rank": 1,
+        "doc_id": "doc_2",
+        "document": "Cheap used cars in excellent condition for budget buyers",
+        "hybrid_score": 0.5035,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1724
+      },
+      {
+        "rank": 2,
+        "doc_id": "doc_1",
+        "document": "Electric vehicles with long battery life and fast charging",
+        "hybrid_score": 0.5009,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1681
+      },
+      {
+        "rank": 3,
+        "doc_id": "doc_3",
+        "document": "Luxury cars with hybrid engines and premium features",
+        "hybrid_score": 0.3651,
+        "bm25_score": 0.6998,
+        "tfidf_score": 0.1419
+      }
+    ]
+  },
+  "TF-IDF-Heavy": {
+    "weights": {
+      "alpha": 0.2,
+      "beta": 0.8
+    },
+    "top_result": {
+      "rank": 1,
+      "doc_id": "doc_2",
+      "document": "Cheap used cars in excellent condition for budget buyers",
+      "hybrid_score": 0.3379,
+      "bm25_score": 1.0,
+      "tfidf_score": 0.1724
+    },
+    "all_results": [
+      {
+        "rank": 1,
+        "doc_id": "doc_2",
+        "document": "Cheap used cars in excellent condition for budget buyers",
+        "hybrid_score": 0.3379,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1724
+      },
+      {
+        "rank": 2,
+        "doc_id": "doc_1",
+        "document": "Electric vehicles with long battery life and fast charging",
+        "hybrid_score": 0.3345,
+        "bm25_score": 1.0,
+        "tfidf_score": 0.1681
+      },
+      {
+        "rank": 3,
+        "doc_id": "doc_3",
+        "document": "Luxury cars with hybrid engines and premium features",
+        "hybrid_score": 0.2535,
+        "bm25_score": 0.6998,
+        "tfidf_score": 0.1419
+      }
+    ]
+  }
+}
