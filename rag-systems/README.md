@@ -68,10 +68,10 @@ python rag_system.py
 
 ### Technical Implementation
 - **Document Chunking** - Sliding window with overlap, semantic boundaries
-- **Embedding Generation** - Vector representations using OpenRouter API
+- **Embedding Generation** - Vector representations using Sentence Transformers (free)
 - **Vector Search** - Cosine similarity, top-k retrieval
 - **Prompt Engineering** - Context injection, citation formatting
-- **Answer Generation** - Grounded responses with citations
+- **Answer Generation** - Grounded responses with citations using OpenRouter (free)
 
 ### Best Practices
 - **Chunking Strategies** - 300-800 tokens with overlap
@@ -81,7 +81,8 @@ python rag_system.py
 - **Evaluation Metrics** - Answer quality, citation accuracy
 
 ## 🛠️ Tools & Technologies
-- **OpenRouter API** - Embeddings and LLM generation
+- **Sentence Transformers** - Free local embedding generation (`all-MiniLM-L6-v2`)
+- **OpenRouter API** - Free LLM generation (`mistralai/mistral-small-3.2-24b-instruct:free`)
 - **NumPy** - Vector operations and similarity calculations
 - **TikToken** - Token counting and text processing
 - **JSONL** - Efficient data storage format
