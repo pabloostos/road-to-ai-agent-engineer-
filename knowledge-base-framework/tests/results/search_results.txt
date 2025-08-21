@@ -1,0 +1,33 @@
+🔍 Search Results for: 'machine learning'
+============================================================
+
+🏆 Result #1 (Score: 0.481)
+📚 Knowledge Base: ai_knowledge
+📄 File: ai_basics.txt
+🔢 Chunk ID: 0
+📝 Tokens: 453
+📖 Content:
+Artificial Intelligence (AI) is a branch of computer science that aims to create machines capable of performing tasks that typically require human intelligence. These tasks include learning, reasoning, problem-solving, perception, and language understanding.
+
+The field of AI was founded in the 1950s...
+----------------------------------------
+
+🏆 Result #2 (Score: 0.481)
+📚 Knowledge Base: default_kb
+📄 File: ai_basics.txt
+🔢 Chunk ID: 0
+📝 Tokens: 453
+📖 Content:
+Artificial Intelligence (AI) is a branch of computer science that aims to create machines capable of performing tasks that typically require human intelligence. These tasks include learning, reasoning, problem-solving, perception, and language understanding.
+
+The field of AI was founded in the 1950s...
+----------------------------------------
+
+📊 Search Metadata:
+--------------------
+🔍 Query: machine learning
+📚 KBs searched: 6
+📄 Total found: 4
+✅ After filtering: 4
+⏱️  Search time: 0.151s
+📅 Timestamp: 2025-08-21T13:04:39.173221

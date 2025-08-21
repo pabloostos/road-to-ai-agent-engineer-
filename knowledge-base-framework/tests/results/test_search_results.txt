@@ -1,0 +1,22 @@
+🔍 Search Results for: 'policy'
+============================================================
+
+🏆 Result #1 (Score: 0.336)
+📚 Knowledge Base: company_policies
+📄 File: hr_policies.txt
+🔢 Chunk ID: 1
+📝 Tokens: 56
+📖 Content:
+be handled professionally and in accordance with legal requirements.
+
+Employee development and training policies support continuous learning and career growth. Organizations should provide opportunities for skill development, professional certifications, and career advancement. Regular training sess...
+----------------------------------------
+
+📊 Search Metadata:
+--------------------
+🔍 Query: policy
+📚 KBs searched: 6
+📄 Total found: 1
+✅ After filtering: 1
+⏱️  Search time: 0.063s
+📅 Timestamp: 2025-08-21T13:06:05.662030

@@ -1,0 +1,13 @@
+{
+  "name": "test_management_kb",
+  "created_at": "2025-08-21T13:11:39.356533",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "chunk_size": 250,
+  "overlap_size": 50,
+  "total_files": 1,
+  "total_chunks": 3,
+  "files": [
+    "hr_policies.txt"
+  ]
+}

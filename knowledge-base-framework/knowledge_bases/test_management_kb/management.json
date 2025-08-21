@@ -1,0 +1,11 @@
+{
+  "created_by": "Multi-KB Manager",
+  "creation_timestamp": "2025-08-21T13:11:39.358871",
+  "config_used": {
+    "embedding_model": "all-MiniLM-L6-v2",
+    "chunk_size": 250,
+    "overlap_size": 50,
+    "similarity_threshold": 0.5
+  },
+  "management_version": "1.0"
+}

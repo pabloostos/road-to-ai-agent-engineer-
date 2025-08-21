@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "rank": 1,
+      "similarity": 0.48108744621276855,
+      "text": "Artificial Intelligence (AI) is a branch of computer science that aims to create machines capable of performing tasks that typically require human intelligence. These tasks include learning, reasoning, problem-solving, perception, and language understanding.\n\nThe field of AI was founded in the 1950s, with the goal of creating machines that could simulate human intelligence. Early AI research focused on symbolic reasoning and rule-based systems. Over the decades, AI has evolved significantly, incorporating various approaches including machine learning, neural networks, and deep learning.\n\nMachine learning is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed. It uses algorithms to identify patterns in data and make predictions or decisions based on those patterns. There are three main types of machine learning: supervised learning, unsupervised learning, and reinforcement learning.\n\nSupervised learning involves training a model on labeled data, where the correct answers are provided. The model learns to map inputs to outputs and can then make predictions on new, unseen data. Common applications include image classification, spam detection, and medical diagnosis.\n\nUnsupervised learning works with unlabeled data, where the model must find hidden patterns or structures on its own. This type of learning is useful for clustering, dimensionality reduction, and anomaly detection. Examples include customer segmentation and recommendation systems.\n\nReinforcement learning is a type of learning where an agent learns to make decisions by taking actions in an environment and receiving rewards or penalties. The agent's goal is to maximize cumulative rewards over time. This approach is commonly used in game playing, robotics, and autonomous systems.\n\nNatural Language Processing (NLP) is another important area of AI that focuses on enabling computers to understand, interpret, and generate human language. NLP combines computational linguistics with machine learning and deep learning to process and analyze large amounts of natural language data.\n\nComputer vision is a field of AI that enables machines to interpret and understand visual information from the world. It involves developing algorithms that can identify and process images and videos, enabling applications like facial recognition, autonomous vehicles, and medical imaging.\n\nThe future of AI holds tremendous potential, with applications ranging from healthcare and education to transportation and entertainment. However, it also raises important questions about ethics, privacy, and the impact on society and employment.",
+      "file_name": "ai_basics.txt",
+      "chunk_id": 0,
+      "tokens": 453,
+      "knowledge_base": "ai_knowledge"
+    },
+    {
+      "rank": 1,
+      "similarity": 0.48108744621276855,
+      "text": "Artificial Intelligence (AI) is a branch of computer science that aims to create machines capable of performing tasks that typically require human intelligence. These tasks include learning, reasoning, problem-solving, perception, and language understanding.\n\nThe field of AI was founded in the 1950s, with the goal of creating machines that could simulate human intelligence. Early AI research focused on symbolic reasoning and rule-based systems. Over the decades, AI has evolved significantly, incorporating various approaches including machine learning, neural networks, and deep learning.\n\nMachine learning is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed. It uses algorithms to identify patterns in data and make predictions or decisions based on those patterns. There are three main types of machine learning: supervised learning, unsupervised learning, and reinforcement learning.\n\nSupervised learning involves training a model on labeled data, where the correct answers are provided. The model learns to map inputs to outputs and can then make predictions on new, unseen data. Common applications include image classification, spam detection, and medical diagnosis.\n\nUnsupervised learning works with unlabeled data, where the model must find hidden patterns or structures on its own. This type of learning is useful for clustering, dimensionality reduction, and anomaly detection. Examples include customer segmentation and recommendation systems.\n\nReinforcement learning is a type of learning where an agent learns to make decisions by taking actions in an environment and receiving rewards or penalties. The agent's goal is to maximize cumulative rewards over time. This approach is commonly used in game playing, robotics, and autonomous systems.\n\nNatural Language Processing (NLP) is another important area of AI that focuses on enabling computers to understand, interpret, and generate human language. NLP combines computational linguistics with machine learning and deep learning to process and analyze large amounts of natural language data.\n\nComputer vision is a field of AI that enables machines to interpret and understand visual information from the world. It involves developing algorithms that can identify and process images and videos, enabling applications like facial recognition, autonomous vehicles, and medical imaging.\n\nThe future of AI holds tremendous potential, with applications ranging from healthcare and education to transportation and entertainment. However, it also raises important questions about ethics, privacy, and the impact on society and employment.",
+      "file_name": "ai_basics.txt",
+      "chunk_id": 0,
+      "tokens": 453,
+      "knowledge_base": "default_kb"
+    }
+  ],
+  "metadata": {
+    "query": "machine learning",
+    "knowledge_bases_searched": [
+      "ai_knowledge",
+      "default_kb",
+      "cooking_recipes",
+      "demo_kb",
+      "custom_kb",
+      "company_policies"
+    ],
+    "total_results_found": 4,
+    "results_after_filtering": 4,
+    "results_returned": 2,
+    "similarity_threshold": 0.3,
+    "search_time_seconds": 0.151,
+    "search_timestamp": "2025-08-21T13:04:39.173221"
+  }
+}

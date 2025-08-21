@@ -1,0 +1,13 @@
+{
+  "name": "custom_kb",
+  "created_at": "2025-08-21T13:00:44.152757",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "chunk_size": 200,
+  "overlap_size": 20,
+  "total_files": 1,
+  "total_chunks": 4,
+  "files": [
+    "italian_recipes.txt"
+  ]
+}
